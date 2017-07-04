@@ -27,7 +27,9 @@ param(
     [Parameter(Position=9, Mandatory=0)]
     [string]$scriptPath,
     [Parameter(Position=10,Mandatory=0)]
-    [switch]$detailedDocs = $false
+    [switch]$detailedDocs = $false,
+    [Parameter(Position=11,Mandatory=0)]
+    [switch]$notr = $false
 )
 
 # setting $scriptPath here, not as default argument, to support calling as "powershell -File psake.ps1"
@@ -50,4 +52,4 @@ if ($buildFile -and (-not(test-path $buildFile))) {
     }
 } 
 
-Invoke-psake $buildFile $taskList $framework $docs $parameters $properties $initialization $nologo $detailedDocs
+Invoke-psake $buildFile $taskList $framework $docs $parameters $properties $initialization $nologo $detailedDocs $notr
